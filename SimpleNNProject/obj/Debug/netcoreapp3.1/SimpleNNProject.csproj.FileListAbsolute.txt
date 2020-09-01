@@ -1,0 +1,13 @@
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.deps.json
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.runtimeconfig.json
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.runtimeconfig.dev.json
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.dll
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.pdb
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csprojAssemblyReference.cache
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.AssemblyInfoInputs.cache
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.AssemblyInfo.cs
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csproj.CoreCompileInputs.cache
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.dll
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.pdb
+/home/ui/RiderProjects/SimpleNN/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.genruntimeconfig.cache
