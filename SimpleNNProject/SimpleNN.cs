@@ -1,113 +1,99 @@
-
-
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace SimpleNNProject {
     public class NeuralNetwork {
         #region Properties
-        private List<List<Neuron>> _layers = new List<List<Neuron>>();
-        private readonly int _layerCount = 0;
-        private int[] _sizes;
-        private Func<double, double> _activationFunction;
-        private Func<double, double> _detActivationFunction;
-        
-        public readonly double LearningRate;
+        private List<Neuron> InputLayer { get; }
+        private List<List<Neuron>> HiddenLayers { get; }
+        private List<Neuron> OutputLayer { get; }
+
+        public double Momentum { get; set; }
+        public double LearningRate { get; set; }
         #endregion
 
         #region Constructor
-        public NeuralNetwork(double learningRate, Func<double, double> activationFunction, Func<double, double> detActivationFunction, params int[] sizes) {
-            _activationFunction = activationFunction;
-            _detActivationFunction = detActivationFunction;
-            _sizes = sizes;
-            _layerCount = sizes.Length;
+        public NeuralNetwork(
+            int inputSize, int[] hiddenSizes, int outputSize, 
+            Func<double, double> activationFunction, 
+            Func<double, double> dActivationFunction,
+            double learningRate = 0.25,
+            double momentum = 0.9
+        ) {
+            InputLayer = new List<Neuron>();
+            HiddenLayers = new List<List<Neuron>>();
+            OutputLayer = new List<Neuron>();
             
             LearningRate = learningRate;
-            
+            Momentum = momentum;
+
             // Input
-            var inputLayer = new List<Neuron>();
-            for (int i = 0; i < sizes[0]; i++) inputLayer.Add(new Neuron(activationFunction, detActivationFunction));
-            _layers.Add(inputLayer);
+            for (int i = 0; i < inputSize; i++) 
+                InputLayer.Add(new Neuron(activationFunction, dActivationFunction));
             
-
-            // Hidden and output
+            // Hidden 
+            var firstHidden = new List<Neuron>();
+            for (int i = 0; i < hiddenSizes[0]; i++) 
+                firstHidden.Add(new Neuron(InputLayer, activationFunction, dActivationFunction));
             
-            for (int i = 1; i < sizes.Length; i++) {
+            HiddenLayers.Add(firstHidden);
+            
+            for (int i = 1; i < hiddenSizes.Length; i++) {
                 var layer = new List<Neuron>();
-
-                for (var j = 0; j < sizes[i]; j++)
+            
+                for (var j = 0; j < hiddenSizes[i]; j++)
                     layer.Add(new Neuron(
-                        _layers[i - 1], 
-                        activationFunction,
-                        detActivationFunction
+                        HiddenLayers[i - 1], activationFunction, dActivationFunction
                     ));
-                _layers.Add(layer);
-                
-                foreach (var neuron in _layers[i - 1]) 
-                    neuron.OutputSynapses = _layers[i]
-                        .Select(neuron1 => new Synapse(neuron, neuron1))
-                        .ToList();
-
-                
+                HiddenLayers.Add(layer);
             }
+            
+            // Output
+            for (int i = 0; i < outputSize; i++)
+                OutputLayer.Add(new Neuron(HiddenLayers[^1], activationFunction, dActivationFunction));
             
         }
         #endregion
 
-        public List<double> ForwardPropagate(int[] input) {
-            for (int i = 0; i < input.Length; i++) _layers[0][i].Value = input[i];
-
-            for (var i = 1; i < _layerCount; i++)
-                foreach (var neuron in _layers[i]) neuron.Calculate();
-
-            return _layers[^1].Select(neuron => neuron.Value).ToList();
-        }
-        
-        public void BackPropagate(List<Tuple<int[], int[]>> trainMatrix, int epochCount) {
+        #region Train
+        public void BackPropagate(IEnumerable<Tuple<double[], double[]>> trainMatrix, int epochCount) {
             for (int epoch = 0; epoch < epochCount; epoch++) {
                 foreach (var (input, except) in trainMatrix) {
-                    var y = ForwardPropagate(input);
-
-                    // _layers[^1]
-                    //     .Zip(except)
-                    //     .ToList()
-                    //     .ForEach(tuple => tuple.First.Gradient = tuple.Second - tuple.First.Value);
+                     ForwardPropagate(input);
                     
-                    var error = y.
-                        Zip(except)
-                        .Select(tuple => Math.Pow(tuple.First - tuple.Second, 2))
-                        .Sum() / except.Length;
-
-                    foreach (var neuron in _layers[^1]) {
-                        neuron.Gradient = error * _detActivationFunction(neuron.Value);
-                    }
-
-                    foreach (var layer in _layers.SkipLast(1).Reverse())
-                        foreach (var neuron in layer) {
-                            neuron.UpdateGradient();
-                            neuron.UpdateWeights(LearningRate, error);
-                        }
+                    foreach (var (neuron, excepted) in OutputLayer.Zip(except)) 
+                        neuron.Gradient = 
+                            neuron.Value * (1 - neuron.Value) * (excepted - neuron.Value);
+                    
+                    foreach (var hiddenLayer in HiddenLayers.AsEnumerable()!.Reverse()) 
+                        hiddenLayer.ForEach(neuron => neuron.CalculateGradient());
+                    
+                    foreach (var hiddenLayer in HiddenLayers.AsEnumerable()!.Reverse()) 
+                        hiddenLayer.ForEach(neuron => neuron.UpdateWeights(LearningRate, Momentum));
+                    
+                    OutputLayer.ForEach(neuron => neuron.UpdateWeights(LearningRate, Momentum));
+                    
                 }
             }
         }
+        #endregion
 
-        public List<double> Weights() {
-            var weights = new List<List<double>>();
-            foreach (var layer in _layers) {
-                weights.Add(layer
-                    .Select(neuron => neuron.OutputSynapses.Select(synapse => synapse.Weight))
-                    .SelectMany(w => w).ToList()
-                );
-            }
-
-            return weights.SelectMany(w => w).ToList();
+        #region Predict
+        public void ForwardPropagate(double[] input) {
+            var i = 0;
+            InputLayer.ForEach(neuron => neuron.Value = input[i++]);
+            
+            foreach(var layer in HiddenLayers)
+                layer.ForEach(neuron => neuron.CalculateValue());
+            
+            OutputLayer.ForEach(neuron => neuron.CalculateValue());
         }
+        public IEnumerable<double> Get() {
+            return OutputLayer.Select(neuron => neuron.Value); 
+        }
+        #endregion
         
-        private List<double> SumList(List<double> first, List<double> second) => 
-            first.Zip(second).Select(tuple => tuple.First + tuple.Second).ToList();
-
     }
 
     public class Neuron {
@@ -115,58 +101,64 @@ namespace SimpleNNProject {
         public List<Synapse> InputSynapses { get; set; }
         public List<Synapse> OutputSynapses { get; set; }
         public double Value { get; set; }
-        public double Bias { get; set; } = 1;
+        public double Bias { get; set; }
+        public double BiasDelta { get; set; }
         public double Gradient { get; set; }
         
-        private Func<double, double> _activationFunction;
-        private Func<double, double> _detActivationFunction;
+        private readonly Func<double, double> _act;
+        private readonly Func<double, double> _dact;
         #endregion
 
         #region Constructors
-        public Neuron(Func<double, double> activationFunction, Func<double, double> detActivationFunction) {
-            _activationFunction = activationFunction;
-            _detActivationFunction = detActivationFunction;
-            Value = 0;
+        public Neuron(
+            Func<double, double> activationFunction, 
+            Func<double, double> dActivationFunction
+        ) {
+            _act = activationFunction;
+            _dact = dActivationFunction;
+            
+            Bias = 2 * new Random().NextDouble() - 1;
+            BiasDelta = 0;
+            
             InputSynapses = new List<Synapse>();
             OutputSynapses = new List<Synapse>();
         }
 
-        public Neuron(List<Neuron> inputNeurons, Func<double, double> activationFunction, Func<double, double> detActivationFunction) {
-            _activationFunction = activationFunction;
-            _detActivationFunction = detActivationFunction;
-            Value = 0;
-            OutputSynapses = new List<Synapse>();
-            InputSynapses = inputNeurons
-                .Select((neuron, i) => new Synapse(
-                    inputNeurons[i], neuron)
-                ).ToList();
+        public Neuron(
+            IEnumerable<Neuron> inputNeurons, 
+            Func<double, double> activationFunction, 
+            Func<double, double> dActivationFunction
+        ): this(activationFunction, dActivationFunction) {
+            
+            foreach (var inputNeuron in inputNeurons) {
+                InputSynapses.Add(new Synapse(inputNeuron, this));
+                inputNeuron.OutputSynapses.Add(new Synapse(inputNeuron, this));
+            }
         }
         #endregion
 
         #region Methods
-        public double Calculate() {
-            return Value = _activationFunction(
+        public double CalculateValue() {
+            return Value = _act(
                 InputSynapses.Select(
                     synapse => synapse.Weight * synapse.InputNeuron.Value
                 ).Sum() + Bias
             );
         }
 
-        public void UpdateGradient() {
-            Gradient = OutputSynapses
-                .Select(synapse => synapse.Weight * synapse.OutputNeuron.Gradient)
-                .Sum() * _detActivationFunction(Value);
+        public double CalculateGradient() {
+            return Gradient = 
+                OutputSynapses.Sum(a => a.OutputNeuron.Gradient * a.Weight) * _dact(Value);
         }
 
-        public void UpdateWeights(double learningRate, double error) {
-            foreach (var synapse in OutputSynapses) {
-                var deltaWeight = error * 
-                    (synapse.OutputNeuron.Gradient * synapse.InputNeuron.Value) // grad
-                    + learningRate * synapse.DeltaWeight;
-                // Console.WriteLine(synapse.OutputNeuron.Gradient);
-                
-                synapse.DeltaWeight = deltaWeight;
-                synapse.Weight += deltaWeight;
+        public void UpdateWeights(double learnRate, double momentum) {
+            var prevDelta = BiasDelta;
+            BiasDelta = learnRate * Gradient; 
+            Bias += learnRate * Gradient + prevDelta * momentum;
+            
+            foreach (var synapse in InputSynapses) {
+                synapse.WeightDelta = learnRate * Gradient * synapse.InputNeuron.Value;
+                synapse.Weight += synapse.WeightDelta;
             }
         }
         #endregion
@@ -174,10 +166,10 @@ namespace SimpleNNProject {
 
     public class Synapse {
         #region Properties
-        public Neuron InputNeuron { get; set; }
-        public Neuron OutputNeuron { get; set; }
+        public Neuron InputNeuron { get; }
+        public Neuron OutputNeuron { get; }
         public double Weight { get; set; }
-        public double DeltaWeight { get; set; } = 0;
+        public double WeightDelta { get; set; } = 0;
         #endregion
         
         #region Constructor
