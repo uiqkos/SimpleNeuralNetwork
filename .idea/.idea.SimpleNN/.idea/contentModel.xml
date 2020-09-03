@@ -6,12 +6,16 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="SimpleNN.sln" t="IncludeFlat" />
       <e p="SimpleNNProject" t="IncludeRecursive">
+        <e p="Modules" t="Include">
+          <e p="NeuralNetwork.cs" t="Include" />
+          <e p="Neuron.cs" t="Include" />
+          <e p="Synapce.cs" t="Include" />
+        </e>
         <e p="Program.cs" t="Include" />
-        <e p="SimpleNN.cs" t="Include" />
         <e p="SimpleNNProject.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp3.1" t="Include">
               <e p="SimpleNNProject.AssemblyInfo.cs" t="Include" />
             </e>

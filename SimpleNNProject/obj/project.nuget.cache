@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "E+VXGfMzqBiUK8O4HZxtb70ruQKUyN2HpSWO318VHxwPtYMLQBBI1ssPPQXTc6GRqQWyQzgLVGIiDJnQU4KVOQ==",
+  "dgSpecHash": "aWw7iiyiPTKWTj+CqB3mD9PgWm+lfCZYgZOGwYR1yIbtRlTSaT5FakioT8Ceej4JP5uXZs7d4q3fShdOxoDauw==",
   "success": true,
   "projectFilePath": "/home/ui/RiderProjects/SimpleNN/SimpleNNProject/SimpleNNProject.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/ui/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.3/microsoft.aspnetcore.app.ref.3.1.3.nupkg.sha512"
+  ],
   "logs": []
 }

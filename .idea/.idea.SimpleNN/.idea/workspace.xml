@@ -13,14 +13,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62dcee4b-95dd-4976-a62b-2b1de1f9ceb4" name="Default Changelist" comment="#2 add Synapse [not working]">
+    <list default="true" id="62dcee4b-95dd-4976-a62b-2b1de1f9ceb4" name="Default Changelist" comment="#3 BackPropagate working [All working!]">
+      <change afterPath="$PROJECT_DIR$/SimpleNNProject/Modules/Neuron.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimpleNNProject/Modules/Synapce.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SimpleNN/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SimpleNN/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SimpleNN/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SimpleNN/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleNNProject/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleNNProject/SimpleNN.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/SimpleNN.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/SimpleNN.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/Modules/NeuralNetwork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/bin/Debug/netcoreapp3.1/SimpleNNProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.genruntimeconfig.cache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/Debug/netcoreapp3.1/SimpleNNProject.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/SimpleNNProject.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/SimpleNNProject.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleNNProject/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleNNProject/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +50,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/SimpleNNProject/SimpleNN.cs" />
+        <option value="$PROJECT_DIR$/SimpleNNProject/Modules/Synapce.cs" />
+        <option value="$PROJECT_DIR$/SimpleNNProject/Modules/Neuron.cs" />
+        <option value="$PROJECT_DIR$/SimpleNNProject/Modules/NeuralNetwork.cs" />
         <option value="$PROJECT_DIR$/SimpleNNProject/Program.cs" />
       </list>
     </option>
@@ -91,7 +110,9 @@
       <workItem from="1598967341730" duration="3099000" />
       <workItem from="1598978223938" duration="3281000" />
       <workItem from="1598984137202" duration="3478000" />
-      <workItem from="1599045448652" duration="1861000" />
+      <workItem from="1599045448652" duration="2539000" />
+      <workItem from="1599048516585" duration="1798000" />
+      <workItem from="1599146514755" duration="3468000" />
     </task>
     <task id="LOCAL-00001" summary="#2 add Synapse [not working]">
       <created>1598960955882</created>
@@ -100,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598960955882</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="#3 BackPropagate working [All working!]">
+      <created>1599047589684</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1599047589684</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,7 +151,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="#2 add Synapse [not working]" />
-    <option name="LAST_COMMIT_MESSAGE" value="#2 add Synapse [not working]" />
+    <MESSAGE value="#3 BackPropagate working [All working!]" />
+    <option name="LAST_COMMIT_MESSAGE" value="#3 BackPropagate working [All working!]" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1280" y="38" width="440" height="1042" key="#Code_Folding" timestamp="1598715534648">
@@ -146,22 +175,22 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="2000" y="183" key="Github.UntrackedFilesDialog/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1598861082107" />
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1599047077400">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom" timestamp="1599149817450">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="277" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599047077400" />
-    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1599047077400">
+    <state width="1874" height="278" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599149817450" />
+    <state width="1874" height="278" key="GridCell.Tab.0.center" timestamp="1599149817450">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="277" key="GridCell.Tab.0.center/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599047077400" />
-    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1599047077399">
+    <state width="1874" height="278" key="GridCell.Tab.0.center/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599149817450" />
+    <state width="1874" height="278" key="GridCell.Tab.0.left" timestamp="1599149817450">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="277" key="GridCell.Tab.0.left/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599047077399" />
-    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1599047077400">
+    <state width="1874" height="278" key="GridCell.Tab.0.left/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599149817450" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right" timestamp="1599149817450">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="277" key="GridCell.Tab.0.right/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599047077400" />
+    <state width="1874" height="278" key="GridCell.Tab.0.right/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599149817450" />
     <state width="1874" height="551" key="GridCell.Tab.1.bottom" timestamp="1598987617639">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
@@ -226,10 +255,10 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state width="1874" height="551" key="GridCell.Tab.4.right/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1598987617640" />
-    <state x="1836" y="295" key="Rider.ProjectTemplateDialog.Size" timestamp="1598711495352">
+    <state x="1836" y="295" key="Rider.ProjectTemplateDialog.Size" timestamp="1599149936373">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state x="1836" y="295" key="Rider.ProjectTemplateDialog.Size/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1598711495352" />
+    <state x="1836" y="295" key="Rider.ProjectTemplateDialog.Size/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599149936373" />
     <state x="1919" y="150" key="RiderGenerateDialog" timestamp="1598878446654">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
@@ -242,10 +271,10 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="1373" y="83" width="1728" height="848" key="VCS.FileHistoryDialog/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1598986227224" />
-    <state x="1836" y="296" key="Vcs.Push.Dialog.v2" timestamp="1598960960700">
+    <state x="1836" y="296" key="Vcs.Push.Dialog.v2" timestamp="1599047617930">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state x="1836" y="296" key="Vcs.Push.Dialog.v2/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1598960960700" />
+    <state x="1836" y="296" key="Vcs.Push.Dialog.v2/1280.0.1920.1080/0.38.1280.1014@1280.0.1920.1080" timestamp="1599047617930" />
     <state x="1997" y="406" width="556" height="476" key="cloudConfig.PluginsDialog" timestamp="1598711559183">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
@@ -259,30 +288,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SimpleNNProject/Program.cs</url>
-          <line>25</line>
-          <properties documentPath="$PROJECT_DIR$/SimpleNNProject/Program.cs" initialLine="46">
+          <url>file://$PROJECT_DIR$/SimpleNNProject/Modules/NeuralNetwork.cs</url>
+          <line>73</line>
+          <properties documentPath="$PROJECT_DIR$/SimpleNNProject/Modules/NeuralNetwork.cs" initialLine="73">
             <startOffsets>
-              <option value="913" />
+              <option value="2752" />
             </startOffsets>
             <endOffsets>
-              <option value="940" />
+              <option value="2839" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/SimpleNNProject/Program.cs</url>
-          <line>23</line>
-          <properties documentPath="$PROJECT_DIR$/SimpleNNProject/Program.cs" initialLine="24">
-            <startOffsets>
-              <option value="849" />
-            </startOffsets>
-            <endOffsets>
-              <option value="887" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
